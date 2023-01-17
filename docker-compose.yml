@@ -1,5 +1,24 @@
 version: '3'
 
+x-var: &NGIN_PORT
+        9080:8000
+x-var: &DJANGO_PORT
+        8000
+x-var: &MYSQL_PORT
+        3306:3306
+x-var:  &PHP_PORT
+        9090:80
+x-var:  &ROOT_PASS
+        P@ssw0rd
+x-var:  &PASS
+        P@ssw0rd
+x-var:  &USER
+        site_db
+x-var:  &DATABASE
+        site_db
+x-var:  &HOST
+        mysql
+
 services:
     django:
         build: .
@@ -7,7 +26,7 @@ services:
         volumes:
             - ./site_project:/home/site_project
         expose:
-            - 8000
+            - *DJANGO_PORT
         depends_on: # <-- wait for mysql to be "ready" before starting this service
             - mysql
         networks:
@@ -17,9 +36,7 @@ services:
         restart: always
         image: nginx:1.13
         ports:
-            - 9080:8000
-#            - 80:8000
-#            - 443:443
+            - *NGIN_PORT
         volumes:
             - ./config/nginx/conf.d:/etc/nginx/conf.d # <-- for using non-SSL
 #            - ./config/nginx-ssl/conf.d:/etc/nginx/conf.d <-- for using SSL
@@ -39,13 +56,13 @@ services:
             - ./mysql/dump:/docker-entrypoint-initdb.d
         restart: always
         environment:
-            MYSQL_ROOT_PASSWORD: P@ssw0rd
-            MYSQL_DATABASE: site_db
-            MYSQL_USER: site_db
-            MYSQL_PASSWORD: P@ssw0rd
+            MYSQL_ROOT_PASSWORD: *ROOT_PASS
+            MYSQL_DATABASE: *DATABASE
+            MYSQL_USER: *USER
+            MYSQL_PASSWORD: *PASS
         command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
         ports:
-            - 3306:3306
+            - *MYSQL_PORT
         networks:
             - mysql_network
     phpmyadmin:
@@ -54,10 +71,10 @@ services:
         image: phpmyadmin/phpmyadmin
         restart: always
         ports:
-            - 9090:80
+            - *PHP_PORT
         environment:
-            PMA_HOST: mysql
-            MYSQL_ROOT_PASSWORD: P@ssw0rd
+            PMA_HOST: *HOST
+            MYSQL_ROOT_PASSWORD: *ROOT_PASS
         networks:
             - mysql_network
 networks:
