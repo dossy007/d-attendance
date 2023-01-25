@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.9.15
 ENV PYTHONUNBUFFERED 1
 
 # Prerequisites for python-ldap

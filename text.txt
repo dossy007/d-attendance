@@ -12,4 +12,22 @@ urlを切る感じかね。
   出勤簿
   打刻修正
   管理者承認(スタッフ権限のある人だけ)
-  
+
+SystemError: PY_SSIZE_T_CLEAN macro must be defined for '#' formats
+PY_SSIZEのエラーは3.10以上で発生。3.9.15にfixで対応
+
+https://docs.djangoproject.com/ja/4.1/intro/tutorial01/
+django tutorialを参考にしてまず作成しましょう。
+・ユーザーが投票したり、結果を公開できる
+・投票項目の追加変更などが管理サイトで可能
+
+superuserにloginできへんなぁ
+
+2023-01-25 07:37:56 nginx: 
+[emerg] host not found in upstream "django:8000" in /etc/nginx/conf.d/domain.com.conf:2
+
+これか？
+
+productionが動いてるぽいぞ。nginxで動かしているからかね。
+nginxで動いているからか、productionがうごていいたためdebug Trueに変えて、dbの情報を与えた
+

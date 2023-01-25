@@ -32,9 +32,11 @@ MEDIAFILES_DIRS = [
 
 if 'SERVER_SOFTWARE' in os.environ:
     print('@@ PRODUCTION @@')
-    DEBUG = False
+    # DEBUG = False
+    DEBUG = True
     ENV = 'PROD'
-
+    
+    # not use production
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
@@ -54,11 +56,15 @@ else:
     print('@@ DEVELOPMENT @@')
     DEBUG = True
     ENV = 'DEV'
-
+    
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'site_db.sqlite3'),
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'mysql',
+            'PORT': 3306,
+            'NAME': 'site_db',
+            'USER': 'site_db',
+            'PASSWORD': 'P@ssw0rd',
         }
     }
 
@@ -74,6 +80,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls.apps.PollsConfig',
 ]
 
 MIDDLEWARE = [
