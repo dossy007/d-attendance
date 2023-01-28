@@ -31,3 +31,5 @@ superuserにloginできへんなぁ
 productionが動いてるぽいぞ。nginxで動かしているからかね。
 nginxで動いているからか、productionがうごていいたためdebug Trueに変えて、dbの情報を与えた
 
+tutorial3
+もっとviewを書いてみる
