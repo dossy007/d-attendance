@@ -1,0 +1,2 @@
+INSERT INTO `polls_question` (`id`, `question_text`, `pub_date`) VALUES ('1', 'What\'s up!!!', '2023-01-25 16:25:11.000000');
+INSERT INTO `polls_question` (`id`, `question_text`, `pub_date`) VALUES ('2', 'Hey!!', '2023-01-26 16:25:11.000000');
