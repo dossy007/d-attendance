@@ -13,6 +13,9 @@ urlを切る感じかね。
   打刻修正
   管理者承認(スタッフ権限のある人だけ)
 
+  $ docker exec -it c35839323b91 bash
+
+
 SystemError: PY_SSIZE_T_CLEAN macro must be defined for '#' formats
 PY_SSIZEのエラーは3.10以上で発生。3.9.15にfixで対応
 
@@ -33,3 +36,23 @@ nginxで動いているからか、productionがうごていいたためdebug Tr
 
 tutorial3
 もっとviewを書いてみる
+
+tutorial4
+
+--initialize specified but the data directory has files in it.
+ここでsqlが動かなくなりした。
+continerの再起動、再作成
+macの再起動
+volumeの削除を行いましたが
+
+解決策は、
+my_project/mysql/data/ib_buffer_pool
+ib_buffer_poolが邪魔をしていたぽい
+多分これ、processとかに関わっているものかもしれん。
+これが1つだけ残っていたので削除！
+
+するといけた。
+my_project/mysql/data/
+は正常時には、いろいろ入ってる。1,2個だけじゃないので
+動かなければ疑いをかけようね。
+
