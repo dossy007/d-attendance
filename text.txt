@@ -56,3 +56,8 @@ my_project/mysql/data/
 は正常時には、いろいろ入ってる。1,2個だけじゃないので
 動かなければ疑いをかけようね。
 
+tutorial5はtest
+動作確認を行う
+
+https://qiita.com/HyunwookPark/items/89772612cbc5783cac7f
+testでdbを使う
