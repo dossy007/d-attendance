@@ -65,6 +65,10 @@ else:
             'NAME': 'site_db',
             'USER': 'site_db',
             'PASSWORD': 'P@ssw0rd',
+            'TEST':{
+                'NAME':'site_db',
+                'MIRROR':'default'
+            }
         }
     }
 
