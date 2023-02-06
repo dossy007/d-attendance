@@ -65,3 +65,17 @@ testでdbを使う
 
 turorial6
 静的ファイルの取り扱い
+
+tutorial7
+adminフォームのカスタマイズ
+
+https://zenn.dev/look2233/scraps/a4d01a748f32b5
+@admin.displayを使うとエラー
+django -Vを3以上にセット
+再度、dockerを作り直す。
+
+dockerあげたら、clientのvも悪いらしい
+https://www.utakata.work/entry/2021/03/08/070000
+
+vあげたらcsrfの検証エラー よりセキュアになったんだろうね
+https://book-reviews.blog/specific-domain-errors-on-Django/
