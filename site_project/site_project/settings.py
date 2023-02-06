@@ -72,7 +72,8 @@ else:
         }
     }
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0','']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:9080']
 
 
 # Application definition
@@ -102,7 +103,7 @@ ROOT_URLCONF = 'site_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
